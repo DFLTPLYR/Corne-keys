@@ -7,7 +7,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
 
 / {
     keymap {
@@ -37,9 +36,9 @@
 
             bindings = <
 &kp TAB          &kp N1           &kp N2          &kp N3           &kp N4           &kp N5             &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR       &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4       &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &rgb_ug RGB_ON  &rgb_ug RGB_OFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI    &trans    &trans    &trans    &trans     &trans  &trans
-                                                  &rgb_ug RGB_SPI  &trans           &kp SPACE          &kp RET   &trans    &kp RALT
+&trans    &trans  &trans  &trans     &trans  &trans      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
+&trans    &trans  &trans  &trans     &trans  &trans      &trans    &trans    &trans    &trans     &trans  &trans
+                                                  &trans    &trans           &kp SPACE          &kp RET   &trans    &kp RALT
             >;
         };
 
