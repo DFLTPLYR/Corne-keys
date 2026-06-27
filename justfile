@@ -9,12 +9,14 @@ zephyr_dir := zephyr_base + "/share/zephyr-package/cmake"
 
 tc_path := `dirname $(dirname $(realpath $(which arm-none-eabi-gcc)))`
 
+zmk_config := "-DZMK_CONFIG=" + justfile_directory() + "/config"
+
 build-left:
-    ZEPHYR_BASE={{zephyr_base}} ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb GNUARMEMB_TOOLCHAIN_PATH={{tc_path}} west build -b {{board}} -d build/left zmk/app -- -DSHIELD="{{left_shield}}" -DSNIPPET="{{snippet}}" -DZephyr_DIR="{{zephyr_dir}}"
+    ZEPHYR_BASE={{zephyr_base}} ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb GNUARMEMB_TOOLCHAIN_PATH={{tc_path}} west build -b {{board}} -d build/left zmk/app -S {{snippet}} -- -DSHIELD="{{left_shield}}" {{zmk_config}} -DZephyr_DIR="{{zephyr_dir}}"
     mkdir -p firmware && cp build/left/zephyr/zmk.uf2 firmware/left.uf2
 
 build-right:
-    ZEPHYR_BASE={{zephyr_base}} ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb GNUARMEMB_TOOLCHAIN_PATH={{tc_path}} west build -b {{board}} -d build/right zmk/app -- -DSHIELD="{{right_shield}}" -DSNIPPET="{{snippet}}" -DZephyr_DIR="{{zephyr_dir}}"
+    ZEPHYR_BASE={{zephyr_base}} ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb GNUARMEMB_TOOLCHAIN_PATH={{tc_path}} west build -b {{board}} -d build/right zmk/app -S {{snippet}} -- -DSHIELD="{{right_shield}}" {{zmk_config}} -DZephyr_DIR="{{zephyr_dir}}"
     mkdir -p firmware && cp build/right/zephyr/zmk.uf2 firmware/right.uf2
 
 build-settings-reset:
