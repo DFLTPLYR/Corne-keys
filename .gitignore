@@ -1,0 +1,17 @@
+Session.vim
+.direnv/
+result
+result-*
+
+# Build artifacts
+build/
+firmware/
+
+# West metadata
+.west/
+
+# Fetched by `west update`
+zephyr/
+zmk/
+zmk-nice-oled/
+modules/
