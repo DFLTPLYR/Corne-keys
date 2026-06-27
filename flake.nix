@@ -20,14 +20,21 @@
           pyserial
           python-can
           canopen
+          setuptools
+          grpcio-tools
         ]);
       in
       {
         devShells.default = pkgs.mkShell {
           name = "corne-zmk-dev";
 
-          buildInputs = with pkgs; [
+          nativeBuildInputs = with pkgs; [
             pythonEnv
+            python3
+            protobuf
+          ];
+
+          buildInputs = with pkgs; [
             gcc-arm-embedded
             cmake
             ninja
