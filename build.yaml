@@ -9,4 +9,5 @@ include:
     artifact-name: right
   - board: nice_nano_v2
     shield: settings_reset
+    snippet: nrf52840-nosd
     artifact-name: nice_settings_reset

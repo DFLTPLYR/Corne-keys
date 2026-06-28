@@ -1,7 +1,7 @@
 board := "nice_nano_v2"
 left_shield := "corne_left nice_oled"
 right_shield := "corne_right nice_oled"
-snippet := "studio-rpc-usb-uart"
+snippet := "nrf52840-nosd"
 
 zephyr_base := `realpath zephyr`
 
@@ -20,7 +20,7 @@ build-right:
     mkdir -p firmware && cp build/right/zephyr/zmk.uf2 firmware/right.uf2
 
 build-settings-reset:
-    ZEPHYR_BASE={{zephyr_base}} ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb GNUARMEMB_TOOLCHAIN_PATH={{tc_path}} west build -b {{board}} -d build/settings_reset zmk/app -- -DSHIELD="settings_reset" -DZephyr_DIR="{{zephyr_dir}}"
+    ZEPHYR_BASE={{zephyr_base}} ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb GNUARMEMB_TOOLCHAIN_PATH={{tc_path}} west build -b {{board}} -d build/settings_reset zmk/app -S {{snippet}} -- -DSHIELD="settings_reset" -DZephyr_DIR="{{zephyr_dir}}"
     mkdir -p firmware && cp build/settings_reset/zephyr/zmk.uf2 firmware/settings_reset.uf2
 
 build: build-left build-right build-settings-reset
